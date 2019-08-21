@@ -16,7 +16,7 @@ applications:
     targetRevision: HEAD
     syncPolicy:
       automated:
-        prune: false
+        prune: true
   - name: argocd
     namespace: argocd
     description:
@@ -26,4 +26,16 @@ applications:
     targetRevision: HEAD
     syncPolicy:
       automated:
-        prune: false
+        prune: true
+  - name: sealed-secrets
+    description:
+    displayName:
+    helm:
+      valueFiles:
+        - "values.yaml"
+    path: sealed-secrets
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
