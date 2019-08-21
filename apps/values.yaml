@@ -50,15 +50,3 @@ applications:
     syncPolicy:
       automated:
         prune: true
-
-  - name: falco
-    nodeSelector: ""
-    helm:
-      valueFiles:
-        - "values.yaml"
-    path: falco
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
