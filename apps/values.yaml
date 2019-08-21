@@ -6,8 +6,6 @@ applications:
   - name: apps
     namespace: argocd
     noNamespaceCreation: true
-    description:
-    displayName:
     helm:
       valueFiles:
         - "values.yaml"
@@ -19,8 +17,6 @@ applications:
         prune: true
   - name: argocd
     namespace: argocd
-    description:
-    displayName:
     path: argocd
     repoURL: https://github.com/niiku/wheel-cluster-config.git
     targetRevision: HEAD
@@ -28,8 +24,6 @@ applications:
       automated:
         prune: true
   - name: sealed-secrets
-    description:
-    displayName:
     helm:
       valueFiles:
         - "values.yaml"
@@ -46,3 +40,13 @@ applications:
     syncPolicy:
       automated:
         prune: false
+  - name: strimzi
+    helm:
+      valueFiles:
+        - "values.yaml"
+    path: strimzi
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true

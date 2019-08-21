@@ -1,0 +1,10 @@
+  # Default values for strimzi-kafka-operator.
+strimzi-kafka-operator:
+  watchNamespaces:
+#  - strimzi
+
+# Override the docker image repository used by all Strimzi images
+  # imageRepositoryOverride: foobar
+  # Override the docker image tag used by all Strimzi images
+  # imageTagOverride: latest
+  createGlobalResources: true
