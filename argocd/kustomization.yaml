@@ -2,6 +2,8 @@ kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 bases:
   - github.com/argoproj/argo-cd//manifests/ha/cluster-install?ref=v1.1.2
+resources:
+  - base/argocd-route.yaml
 
 patchesStrategicMerge:
   - overlays/argocd-cm.yaml
