@@ -26,13 +26,7 @@ data:
     - url: https://charts.rook.io/release
       name: rook-release
   repositories: |
-    - passwordSecret:
-        key: password
-        name: repo-cluster-config-766355615
-      url: https://github.com/niiku/cluster-config.git
-      usernameSecret:
-        key: username
-        name: repo-cluster-config-766355615
+    - url: https://github.com/niiku/wheel-cluster-config.git
   resource.customizations: |
     apiextensions.k8s.io/CustomResourceDefinition:
       ignoreDifferences: |
