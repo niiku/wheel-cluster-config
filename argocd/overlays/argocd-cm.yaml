@@ -1,0 +1,49 @@
+apiVersion: v1
+data:
+  configManagementPlugins: |
+    - generate:
+        args:
+        - helm template . > all.yaml && kustomize build
+        command:
+        - sh
+        - -c
+      init:
+        args:
+        - helm init --client-only && helm dependency build
+        command:
+        - /bin/sh
+        - -c
+      name: kustomized-helm
+  helm.repositories: |-
+    - url: https://helm.goharbor.io
+      name: harbor
+    - url: https://strimzi.io/charts/
+      name: strimzi
+    - url: http://storage.googleapis.com/kubernetes-charts-incubator
+      name: incubator
+    - url: https://charts.bitnami.com
+      name: bitnami
+    - url: https://charts.rook.io/release
+      name: rook-release
+  repositories: |
+    - passwordSecret:
+        key: password
+        name: repo-cluster-config-766355615
+      url: https://github.com/niiku/cluster-config.git
+      usernameSecret:
+        key: username
+        name: repo-cluster-config-766355615
+  resource.customizations: |
+    apiextensions.k8s.io/CustomResourceDefinition:
+      ignoreDifferences: |
+        jsonPointers:
+        - /spec/additionalPrinterColumns/0/priority
+        - /spec/additionalPrinterColumns/1/priority
+        - /status/lastVersion
+    build.openshift.io/BuildConfig:
+      ignoreDifferences: |
+        jsonPointers:
+        - /status
+kind: ConfigMap
+metadata:
+  name: argocd-cm
