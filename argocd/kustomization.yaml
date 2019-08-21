@@ -4,6 +4,7 @@ bases:
   - github.com/argoproj/argo-cd//manifests/ha/cluster-install?ref=v1.1.2
 resources:
   - base/argocd-route.yaml
+  - base/argocd-sealed-secret.json
 
 patchesStrategicMerge:
   - overlays/argocd-cm.yaml
