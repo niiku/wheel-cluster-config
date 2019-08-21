@@ -1,0 +1,29 @@
+argocdNamespace: argocd
+server: https://kubernetes.default.svc
+project: default
+requestor: admin@nikio.io
+applications:
+  - name: apps
+    namespace: argocd
+    noNamespaceCreation: true
+    description:
+    displayName:
+    helm:
+      valueFiles:
+        - "values.yaml"
+    path: apps
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: false
+  - name: argocd
+    namespace: argocd
+    description:
+    displayName:
+    path: argocd
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: false

@@ -1,0 +1,18 @@
+{{- range .Values.applications -}}
+{{- $nodeSelector := "node-role.kubernetes.io/compute=true" -}}
+{{- if not (kindIs "invalid" .nodeSelector) -}}
+{{- $nodeSelector = .nodeSelector -}}
+{{- end -}}
+{{- if not .noNamespaceCreation -}}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    openshift.io/description: {{ default "" .description | quote }}
+    openshift.io/display-name: {{ default "" .displayName | quote }}
+    openshift.io/requester: {{ default "" $.Values.requestor | quote }}
+    openshift.io/node-selector: {{ $nodeSelector | quote }}
+  name: {{ default .name .namespace | quote }}
+{{ end }}
+{{- end -}}
