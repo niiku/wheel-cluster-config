@@ -54,6 +54,9 @@ applications:
     path: playground
     repoURL: https://github.com/niiku/wheel-cluster-config.git
     targetRevision: HEAD
+    ignoreDifferences:
+      - group: ""
+        kind: PersistentVolumeClaim
     syncPolicy:
       automated:
         prune: true
