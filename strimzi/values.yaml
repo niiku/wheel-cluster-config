@@ -8,3 +8,10 @@ strimzi-kafka-operator:
   # Override the docker image tag used by all Strimzi images
   # imageTagOverride: latest
   createGlobalResources: true
+  resources:
+    limits:
+      memory: 256Mi
+      cpu: 1
+    requests:
+      memory: 128Mi
+      cpu: 50m

@@ -39,7 +39,7 @@ applications:
     targetRevision: HEAD
     syncPolicy:
       automated:
-        prune: false
+        prune: true
   - name: strimzi
     helm:
       valueFiles:
