@@ -50,16 +50,4 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  - name: playground
-    path: playground
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    ignoreDifferences:
-      - group: ""
-        kind: PersistentVolumeClaim
-        jsonPointers:
-          - /
-    syncPolicy:
-      automated:
-        prune: true
 
