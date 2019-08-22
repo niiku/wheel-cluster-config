@@ -61,5 +61,5 @@ applications:
           - /
     syncPolicy:
       automated:
-        prune: false
+        prune: true
 
