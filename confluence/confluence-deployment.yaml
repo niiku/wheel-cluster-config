@@ -69,7 +69,12 @@ spec:
             - mountPath: /opt/atlassian/confluence/logs
               name: temp
           resources:
-            {}
+            requests:
+              cpu: 500m
+              memory: 2Gi
+            limits:
+              cpu: 2
+              memory: 2.5Gi
       volumes:
         - name: data
           persistentVolumeClaim:
