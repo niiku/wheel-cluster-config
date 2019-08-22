@@ -57,6 +57,8 @@ applications:
     ignoreDifferences:
       - group: ""
         kind: PersistentVolumeClaim
+        jsonPointers:
+          - /
     syncPolicy:
       automated:
         prune: false
