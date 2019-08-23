@@ -1,10 +1,15 @@
 # sealed-secrets
 
+Create kubeseal directory
+```
+mkdir ~/kubeseal
+```
+
 ## Fetch certificate
 ```
 kubeseal --controller-name=sealed-secrets \
 --controller-namespace=sealed-secrets \
---fetch-cert > kubeseal.crt
+--fetch-cert >  ~/kubeseal/kubeseal.crt
 ```
 
 ## Create and encrypt generic secret
@@ -16,7 +21,7 @@ kubectl create secret generic secret-example \
 ```
 
 ```
-kubeseal --cert kubeseal.crt \
+kubeseal --cert ~/kubeseal/kubeseal.crt \
 --namespace=target \
 < secret-example.json > namespaced-sealed-secret-example.json
 ```
@@ -30,7 +35,7 @@ kubectl create secret docker-registry harbor-pull-secret \
 --dry-run -o json > pull-secret-example.json
 ```
 ```
-kubeseal --cert kubeseal.crt \
+kubeseal --cert ~/kubeseal/kubeseal.crt \
 --namespace=target \
 < pull-secret-example.json > sealed-pull-secret-example.json
 ```
