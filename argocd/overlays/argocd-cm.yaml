@@ -41,7 +41,7 @@ data:
     Secret:
       ignoreDifferences: |
         jsonPointers:
-        - /
+        - /metadata/labels
 kind: ConfigMap
 metadata:
   name: argocd-cm
