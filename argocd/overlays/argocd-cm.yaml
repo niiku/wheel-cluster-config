@@ -38,6 +38,10 @@ data:
       ignoreDifferences: |
         jsonPointers:
         - /status
+    Secret:
+      ignoreDifferences: |
+        jsonPointers:
+        - /
 kind: ConfigMap
 metadata:
   name: argocd-cm
