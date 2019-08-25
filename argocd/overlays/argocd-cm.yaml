@@ -44,7 +44,7 @@ data:
 #        - /metadata/labels
   resource.exclusions: |
     - apiGroups:
-      - ""
+      - "*"
       kinds:
       - "Secret"
       clusters:
