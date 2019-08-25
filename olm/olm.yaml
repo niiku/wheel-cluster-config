@@ -331,7 +331,7 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: CatalogSource
 metadata:
   name: operatorhubio-catalog
-  namespace: operator-lifecycle-manager
+  namespace: olm
 spec:
   sourceType: grpc
   image: quay.io/operator-framework/upstream-community-operators:latest
