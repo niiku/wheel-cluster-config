@@ -40,6 +40,13 @@ applications:
     syncPolicy:
       automated:
         prune: true
+  - name: olm
+    path: olm
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
   - name: strimzi
     helm:
       valueFiles:
