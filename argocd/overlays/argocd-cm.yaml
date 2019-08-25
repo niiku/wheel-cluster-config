@@ -38,7 +38,7 @@ data:
       ignoreDifferences: |
         jsonPointers:
         - /status
-    Secret:
+    "/Secret":
       ignoreDifferences: |
         jsonPointers:
         - /metadata/labels
