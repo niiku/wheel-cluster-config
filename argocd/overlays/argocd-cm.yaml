@@ -38,17 +38,17 @@ data:
       ignoreDifferences: |
         jsonPointers:
         - /status
-    "/Secret":
-      ignoreDifferences: |
-        jsonPointers:
-        - /metadata/labels
-#  resource.exclusions: |
-#    - apiGroups:
-#      - ""
-#      kinds:
-#      - "Secret"
-#      clusters:
-#      - https://192.168.0.20
+#    "/Secret":
+#      ignoreDifferences: |
+#        jsonPointers:
+#        - /metadata/labels
+  resource.exclusions: |
+    - apiGroups:
+      - ""
+      kinds:
+      - "Secret"
+      clusters:
+      - https://kubernetes.default.svc
 
 kind: ConfigMap
 metadata:
