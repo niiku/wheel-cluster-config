@@ -63,7 +63,7 @@ spec:
     # instruct Che server to launch a special pod to precreate a subpath in a PV
     preCreateSubPaths: true
     # image:tag for preCreateSubPaths jobs
-    pvcJobsImage: ''
+    pvcJobsImage: 'centos:7'
     # keep blank unless you need to use a non default storage class for Postgres PVC
     postgresPVCStorageClassName: ''
     # keep blank unless you need to use a non default storage class for workspace PVC(s)
