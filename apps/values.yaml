@@ -110,10 +110,3 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  - name: ripsaw-operator
-    path: ripsaw-operator
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
