@@ -68,11 +68,8 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  - name: strimzi
-    helm:
-      valueFiles:
-        - "values.yaml"
-    path: strimzi
+  - name: strimzi-kafka-operator
+    path: strimzi-kafka-operator
     repoURL: https://github.com/niiku/wheel-cluster-config.git
     targetRevision: HEAD
     syncPolicy:
