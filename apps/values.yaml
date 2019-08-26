@@ -54,6 +54,13 @@ applications:
     syncPolicy:
       automated:
         prune: true
+  - name: operators
+    path: operators
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
   - name: strimzi
     helm:
       valueFiles:
