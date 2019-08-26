@@ -70,6 +70,7 @@ applications:
         prune: true
   - name: falco
     path: falco
+    nodeSelector: ""
     repoURL: https://github.com/niiku/wheel-cluster-config.git
     targetRevision: HEAD
     syncPolicy:
