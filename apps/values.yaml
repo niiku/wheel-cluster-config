@@ -61,6 +61,13 @@ applications:
     syncPolicy:
       automated:
         prune: true
+  - name: falco-operator
+    path: falco-operator
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
   - name: strimzi
     helm:
       valueFiles:
