@@ -1,10 +1,8 @@
 apiVersion: falco.org/v1alpha1
 kind: Falco
 metadata:
-  name: falco-with-ebpf
+  name: falco
 spec:
-  ebpf:
-    enabled: true
   resources:
    requests:
      cpu: 50m
