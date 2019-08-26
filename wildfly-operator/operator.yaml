@@ -4,6 +4,9 @@ apiVersion: operators.coreos.com/v1alpha2
 kind: OperatorGroup
 metadata:
   name: operatorgroup
+spec:
+  targetNamespaces:
+  - wildfly-operator
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
