@@ -75,36 +75,8 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  - name: vault-operator
-    path: vault-operator
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
   - name: wildfly-operator
     path: wildfly-operator
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
-  - name: kiali-operator
-    path: kiali-operator
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
-  - name: istio-operator
-    path: istio-operator
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
-  - name: jaeger-operator
-    path: jaeger-operator
     repoURL: https://github.com/niiku/wheel-cluster-config.git
     targetRevision: HEAD
     syncPolicy:
