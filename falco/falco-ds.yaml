@@ -3,6 +3,8 @@ kind: Falco
 metadata:
   name: falco
 spec:
+  ebpf:
+    enabled: true
   resources:
    requests:
      cpu: 50m
