@@ -54,8 +54,15 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  - name: operators
-    path: operators
+  - name: eclipse-che-operator
+    path: eclipse-che-operator
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
+  - name: postgres-operator
+    path: postgres-operator
     repoURL: https://github.com/niiku/wheel-cluster-config.git
     targetRevision: HEAD
     syncPolicy:
