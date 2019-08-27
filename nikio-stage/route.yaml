@@ -11,7 +11,7 @@ spec:
     targetPort: proxy
   tls:
     insecureEdgeTerminationPolicy: Redirect
-    termination: Reencrypt
+    termination: reencrypt
   to:
     kind: Service
     name: proxy
