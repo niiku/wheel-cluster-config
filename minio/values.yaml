@@ -202,7 +202,7 @@ persistence:
 
   ## Persistent Volume size
   ##
-  size: 8Gi
+  size: 1Gi
 
   ## Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
@@ -211,7 +211,7 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  # storageClass: "-"
+  storageClass: "glusterfs-storage"
 
   ## Persistent Volume Claim annotations
   ##
