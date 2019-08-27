@@ -1,25 +1,26 @@
 {{- if .Values.networkPolicy.enabled }}
 kind: NetworkPolicy
-apiVersion: {{ template "minio.networkPolicy.apiVersion" . }}
+apiVersion: networking.k8s.io/v1
 metadata:
-  name: {{ template "minio.fullname" . }}
+  name: {{ include "minio.fullname" . }}
   labels:
-    app: {{ template "minio.name" . }}
-    chart: {{ template "minio.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app.kubernetes.io/name: {{ include "minio.name" . }}
+    helm.sh/chart: {{ include "minio.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   podSelector:
     matchLabels:
-      app: {{ template "minio.name" . }}
-      release: {{ .Release.Name }}
+      app.kubernetes.io/name: {{ include "minio.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   ingress:
+    # Allow inbound connections
     - ports:
-        - port: {{ .Values.service.port }}
+      - port: 9000
       {{- if not .Values.networkPolicy.allowExternal }}
       from:
-        - podSelector:
-            matchLabels:
-              {{ template "minio.name" . }}-client: "true"
+      - podSelector:
+          matchLabels:
+            {{ include "minio.fullname" . }}-client: "true"
       {{- end }}
 {{- end }}

@@ -40,3 +40,13 @@ applications:
     syncPolicy:
       automated:
         prune: true
+  - name: minio
+    path: minio
+    helm:
+      valueFiles:
+        - "values.yaml"
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
