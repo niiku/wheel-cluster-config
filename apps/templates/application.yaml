@@ -1,4 +1,5 @@
 {{- range .Values.applications -}}
+{{- if or ((kindIs "invalid" .enabled)) .enabled -}}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -31,3 +32,4 @@ spec:
   {{- toYaml .syncPolicy | nindent 4 }}
 {{- end }}
 {{ end }}
+{{- end }}

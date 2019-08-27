@@ -1,0 +1,12 @@
+mysql:
+  securityContext:
+    enabled: true
+    fsGroup: 1000230000
+    runAsUser: 1000230000
+  root:
+    existingSecret: mysql
+  db:
+    user: guacamole
+  replication:
+    enabled: false
+

@@ -42,6 +42,17 @@ applications:
         prune: true
   - name: minio
     path: minio
+    enabled: false
+    helm:
+      valueFiles:
+        - "values.yaml"
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
+  - name: guacamole
+    path: guacamole
     helm:
       valueFiles:
         - "values.yaml"

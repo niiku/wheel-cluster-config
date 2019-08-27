@@ -1,0 +1,6 @@
+dependencies:
+- name: mysql
+  version: 6.3.2 
+  appVersion: 8.0.17
+  repository: https://charts.bitnami.com
+
