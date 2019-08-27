@@ -1,5 +1,5 @@
 ```
 kubeseal --cert ~/kubeseal/kubeseal.crt \
---namespace=minio \
+--namespace=guacamole \
 < mysql-secret.yaml.ignore > mysql-sealed-secret.json
 ```
