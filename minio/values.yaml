@@ -1,6 +1,6 @@
 ## set kubernetes cluster domain where minio is running
 ##
-clusterDomain: cluster.local
+clusterDomain: minio.apps.wheel.sh
 
 ## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
 ##
@@ -77,7 +77,7 @@ persistence:
   ##
   ## Storage class of PV to bind. By default it looks for standard storage class.
   ## If the PV uses a different storage class, specify that here.
-  # storageClass: standard
+  storageClass: "glusterfs-storage"
   # VolumeName: ""
   accessMode: ReadWriteOnce
   size: 1Gi
