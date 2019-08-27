@@ -8,13 +8,13 @@ spec:
   host: stage.nikio.io
   path: /
   port:
-    targetPort: proxy
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
-    termination: reencrypt
+    termination: edge
   to:
     kind: Service
-    name: proxy
+    name: nikio
     weight: 100
   wildcardPolicy: None
 status:
