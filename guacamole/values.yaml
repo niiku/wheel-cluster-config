@@ -14,3 +14,7 @@ mysql:
     persistence:
       size: 1Gi
       storageClass: "glusterfs-storage"
+    readinessProbe:
+      initialDelaySeconds: 120
+    livenessProbe:
+      initialDelaySeconds: 180
