@@ -1,3 +1,4 @@
+{{- if and .Values.route.enabled (not .Values.disableWebUI ) -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -20,3 +21,4 @@ spec:
 status:
   ingress:
     - routerName: router
+{{- end }}
