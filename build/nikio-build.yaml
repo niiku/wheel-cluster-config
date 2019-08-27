@@ -23,5 +23,9 @@ spec:
     type: Docker
   triggers:
     - type: ConfigChange
+    - type: "GitHub"
+      github:
+        secretReference:
+          name: "github-webhook"
 status:
   lastVersion: 0
