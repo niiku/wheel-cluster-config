@@ -4,7 +4,7 @@ mysql:
     fsGroup: 1000230000
     runAsUser: 1000230000
   root:
-    existingSecret: mysql
+    existingSecret: guacamole-mysql
   db:
     user: guacamole
   replication:
