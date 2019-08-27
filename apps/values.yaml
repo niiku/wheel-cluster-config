@@ -40,6 +40,19 @@ applications:
     syncPolicy:
       automated:
         prune: true
+  - name: build
+    path: build
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    ignoreDifferences:
+      - group: build.openshift.io
+        kind: BuildConfigs
+        name: "*"
+        jsonPointers:
+          - /status
+    syncPolicy:
+      automated:
+        prune: true
   - name: minio
     path: minio
     enabled: false
