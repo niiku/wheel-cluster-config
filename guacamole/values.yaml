@@ -9,4 +9,6 @@ mysql:
     user: guacamole
   replication:
     enabled: false
-
+  persistence:
+    size: 1Gi
+    storageClass: "glusterfs-storage"
