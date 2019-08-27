@@ -9,7 +9,7 @@ spec:
   host: {{ .Values.route.host }}
   path: /
   port:
-    targetPort: http
+    targetPort: minio
   tls:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
