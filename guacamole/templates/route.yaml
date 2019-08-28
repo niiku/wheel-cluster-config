@@ -8,10 +8,10 @@ spec:
   host: apps.wheel.sh
   path: /guacamole
   port:
-    targetPort: http
+    targetPort: https
   tls:
     insecureEdgeTerminationPolicy: Redirect
-    termination: edge
+    termination: Reencrypt
   to:
     kind: Service
     name: guacamole
