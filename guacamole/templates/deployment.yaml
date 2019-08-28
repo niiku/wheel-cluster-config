@@ -106,10 +106,10 @@ spec:
           - --tls-key=/etc/tls/private/tls.key
           - --cookie-secret=SECRET
           volumeMounts:
-            - mountPath: /etc/tls/private
-              name: proxy-tls
-        volumes:
-          - name: proxy-tls
-            secret:
-              secretName: proxy-tls
+          - mountPath: /etc/tls/private
+            name: proxy-tls
+      volumes:
+        - name: proxy-tls
+          secret:
+            secretName: proxy-tls
 
