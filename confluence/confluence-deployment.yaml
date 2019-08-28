@@ -17,6 +17,7 @@ spec:
         app: confluence
         component: server
     spec:
+      serviceAccount: confluence
       securityContext:
         fsGroup: 2002
       containers:
@@ -75,7 +76,46 @@ spec:
             limits:
               cpu: 2
               memory: 2.5Gi
+        - name: oauth-proxy
+          image: openshift/oauth-proxy:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8443
+              name: https
+          args:
+            - --https-address=:8443
+            - --provider=openshift
+            - --openshift-service-account=confluence
+            - --upstream=http://localhost:8090
+            - --tls-cert=/etc/tls/private/tls.crt
+            - --tls-key=/etc/tls/private/tls.key
+            - --cookie-secret=SECRET
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: proxy-tls
+          livenessProbe:
+            tcpSocket:
+              port: https
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 3
+          readinessProbe:
+            tcpSocket:
+              port: https
+            initialDelaySeconds: 15
+            periodSeconds: 15
+            timeoutSeconds: 3
+          resources:
+            requests:
+              cpu: 25m
+              memory:  24Mi
+            limits:
+              cpu: 50m
+              memory: 64Mi
       volumes:
+        - name: proxy-tls
+          secret:
+            secretName: proxy-tls        
         - name: data
           persistentVolumeClaim:
             claimName: confluence-data

@@ -4,13 +4,15 @@ metadata:
   name: confluence
   labels:
     app: confluence
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: proxy-tls
 spec:
   type: ClusterIP
   ports:
-    - port: 80
-      targetPort: http
+    - port: 443
+      targetPort: https
       protocol: TCP
-      name: http
+      name: https
     - port: 8091
       targetPort: synchrony
       protocol: TCP
