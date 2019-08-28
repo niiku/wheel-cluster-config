@@ -21,7 +21,7 @@ spec:
         fsGroup: 2002
       containers:
         - name: confluence
-          image: "atlassian/confluence-server:6.15.7"
+          image: "atlassian/confluence-server:6.15.9"
           imagePullPolicy: IfNotPresent
           env:
             - name: CATALINA_CONNECTOR_PROXYNAME
@@ -79,9 +79,5 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: confluence-data
-        - name: entrypoint
-          configMap:
-            name: entrypoint
-            defaultMode: 0554
         - name: temp
           emptyDir: {}
