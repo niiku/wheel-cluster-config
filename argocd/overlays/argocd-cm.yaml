@@ -46,7 +46,7 @@ data:
     - apiGroups:
       - "*"
       kinds:
-      - "Secret"
+      - "Secrets"
       clusters:
       - https://kubernetes.default.svc
   dex.config: |-
