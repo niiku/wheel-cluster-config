@@ -61,7 +61,7 @@ data:
           hostedDomains:
           - nikio.io
   url: https://argocd.wheel.sh
-  users.anonymous.enabled: 'true'
+  users.anonymous.enabled: 'false'
   statusbadge.enabled: 'true'
 kind: ConfigMap
 metadata:
