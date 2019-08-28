@@ -6,7 +6,7 @@ metadata:
   name: guacamole
 spec:
   host: apps.wheel.sh
-  path: /guacamole
+  path: /
   port:
     targetPort: https
   tls:
