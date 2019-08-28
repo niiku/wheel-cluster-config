@@ -49,7 +49,18 @@ data:
       - "Secret"
       clusters:
       - https://kubernetes.default.svc
-
+  dex.config: |-
+    connectors:
+      - type: oidc
+        id: google
+        name: Google
+        config:
+          issuer: https://accounts.google.com
+          clientID: $dex.google.clientID
+          clientSecret: $dex.google.clientSecret
+          hostedDomains:
+          - nikio.io
+  url: https://argocd.wheel.sh
 kind: ConfigMap
 metadata:
   name: argocd-cm
