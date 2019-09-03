@@ -20,8 +20,8 @@ spec:
         app: confluence
         component: postgresql
     spec:
-      #securityContext:
-        #fsGroup: 1000270000
+      securityContext:
+        fsGroup: 1000270000
       containers:
         - name: postgresql
           image: docker.io/bitnami/postgresql:11.5.0
