@@ -1,21 +1,20 @@
-kind: List
+---
+kind: ServiceAccount
 apiVersion: v1
-items:
+metadata:
+  name: sdn
+  namespace: openshift-sdn
+---
+apiVersion: authorization.openshift.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sdn-cluster-reader
+roleRef:
+  name: cluster-reader
+subjects:
 - kind: ServiceAccount
-  apiVersion: v1
-  metadata:
-    name: sdn
-    namespace: openshift-sdn
-- apiVersion: authorization.openshift.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: sdn-cluster-reader
-  roleRef:
-    name: cluster-reader
-  subjects:
-  - kind: ServiceAccount
-    name: sdn
-    namespace: openshift-sdn
+  name: sdn
+  namespace: openshift-sdn
 - apiVersion: authorization.openshift.io/v1
   kind: ClusterRoleBinding
   metadata:
@@ -26,14 +25,14 @@ items:
   - kind: ServiceAccount
     name: sdn
     namespace: openshift-sdn
-- apiVersion: authorization.openshift.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: sdn-node-proxier
-  roleRef:
-    name: system:node-proxier
-  subjects:
-  - kind: ServiceAccount
-    name: sdn
-    namespace: openshift-sdn
-# TODO: PSP binding
+---
+apiVersion: authorization.openshift.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: sdn-node-proxier
+roleRef:
+  name: system:node-proxier
+subjects:
+- kind: ServiceAccount
+  name: sdn
+  namespace: openshift-sdn
