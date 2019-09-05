@@ -96,11 +96,3 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  - name: openshift-sdn
-    path: openshift-sdn
-    nodeSelector: ""
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: false
