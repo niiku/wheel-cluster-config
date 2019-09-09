@@ -11,10 +11,11 @@ spec:
   host: docs.wheel.sh
   path: /
   port:
-    targetPort: https
+    targetPort: http
   tls:
     insecureEdgeTerminationPolicy: Redirect
-    termination: reencrypt
+    # termination: reencrypt
+    termination: edge
   to:
     kind: Service
     name: confluence
