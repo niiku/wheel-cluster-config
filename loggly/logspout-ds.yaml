@@ -50,7 +50,8 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
+      securityContext:
+        privileged: true
       terminationGracePeriodSeconds: 30
       volumes:
         - hostPath:
