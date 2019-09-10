@@ -10,15 +10,15 @@ allowedCapabilities:
 allowedUnsafeSysctls:
 - '*'
 apiVersion: security.openshift.io/v1
-defaultAddCapabilities: null
+defaultAddCapabilities: []
 fsGroup:
   type: RunAsAny
 kind: SecurityContextConstraints
 metadata:
   name: loggly
-priority: null
+priority: 10
 readOnlyRootFilesystem: false
-requiredDropCapabilities: null
+requiredDropCapabilities: []
 runAsUser:
   type: RunAsAny
 seLinuxContext:

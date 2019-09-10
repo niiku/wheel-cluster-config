@@ -96,13 +96,20 @@ applications:
     syncPolicy:
       automated:
         prune: true
-  # - name: nfs
-  #   path: nfs
-  #   helm:
-  #     valueFiles:
-  #       - "values.yaml"
-  #   repoURL: https://github.com/niiku/wheel-cluster-config.git
-  #   targetRevision: HEAD
-  #   syncPolicy:
-  #     automated:
-  #       prune: true
+    ignoreDifferences:
+      - group: security.openshift.io/v1
+        kind: SecurityContextConstraints
+        name: "loggly"
+        jsonPointers:
+          - /requiredDropCapabilities
+          - /defaultAddCapabilities
+  - name: nfs
+    path: nfs
+    helm:
+      valueFiles:
+        - "values.yaml"
+    repoURL: https://github.com/niiku/wheel-cluster-config.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
