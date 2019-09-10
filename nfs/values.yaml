@@ -1,12 +1,10 @@
 nfs:
   persistence:
-  enabled: true
-
-   storageClass: "rook-ceph-block"
-
-  accessMode: ReadWriteOnce
-  size: 10Gi
-  resources: {}
+    enabled: true
+    storageClass: "rook-ceph-block"
+    accessMode: ReadWriteOnce
+    size: 10Gi
+  resources:
     limits:
       cpu: 100m
       memory: 128Mi

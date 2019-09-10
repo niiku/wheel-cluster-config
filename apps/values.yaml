@@ -97,7 +97,7 @@ applications:
       automated:
         prune: true
     ignoreDifferences:
-      - group: security.openshift.io/v1
+      - group: security.openshift.io
         kind: SecurityContextConstraints
         name: "loggly"
         jsonPointers:
