@@ -22,7 +22,7 @@ spec:
         fsGroup: 2002
       containers:
         - name: confluence
-          image: "atlassian/confluence-server:6.15.9"
+          image: "atlassian/confluence-server:7.0.1"
           imagePullPolicy: IfNotPresent
           env:
             - name: CATALINA_CONNECTOR_PROXYNAME
