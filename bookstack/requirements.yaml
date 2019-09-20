@@ -1,0 +1,4 @@
+dependencies:
+- name: mariadb
+  version: 4.4.x
+  condition: mariadb.enabled

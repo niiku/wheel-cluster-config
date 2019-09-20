@@ -1,0 +1,29 @@
+{{- if .Values.route.enabled -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    haproxy.router.openshift.io/timeout: 10m
+  name: {{ template "bookstack.fullname" . }}
+  labels:
+    app: {{ template "bookstack.name" . }}
+    chart: {{ template "bookstack.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  host: {{ .Values.route.url }}
+  path: /
+  port:
+    targetPort: http
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: {{ template "bookstack.fullname" . }}
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+    - routerName: router
+{{- end }}

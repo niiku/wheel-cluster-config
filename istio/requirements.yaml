@@ -1,0 +1,4 @@
+dependencies:
+  - name: istio
+    repository: https://storage.googleapis.com/istio-release/releases/1.2.5/charts/
+    version: 1.1.0
