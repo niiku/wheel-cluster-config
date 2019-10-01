@@ -52,15 +52,23 @@ data:
       - https://kubernetes.default.svc
   dex.config: |-
     connectors:
-      - type: oidc
-        id: google
-        name: Google
+      # - type: oidc
+      #   id: google
+      #   name: Google
+      #   config:
+      #     issuer: https://accounts.google.com
+      #     clientID: $dex.google.clientID
+      #     clientSecret: $dex.google.clientSecret
+      #     hostedDomains:
+      #     - nikio.io
+      - type: github
+        id: github
+        name: GitHub
         config:
-          issuer: https://accounts.google.com
-          clientID: $dex.google.clientID
-          clientSecret: $dex.google.clientSecret
-          hostedDomains:
-          - nikio.io
+          clientID: $dex.github.clientID
+          clientSecret: $dex.github.clientSecret
+          orgs:
+          - name: table-tennis-tournament
   url: https://argocd.wheel.sh
   users.anonymous.enabled: 'false'
   statusbadge.enabled: 'true'
