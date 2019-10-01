@@ -123,3 +123,15 @@ applications:
     syncPolicy:
       automated:
         prune: true
+  - name: table-tennis-tournament
+    path: namespaces
+    noNamespaceCreation: true
+    namespace: argocd
+    helm:
+      valueFiles:
+        - "values.yaml"
+    repoURL: https://github.com/table-tennis-tournament/deployment-configuration.git
+    targetRevision: HEAD
+    syncPolicy:
+      automated:
+        prune: true
