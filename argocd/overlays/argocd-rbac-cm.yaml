@@ -17,7 +17,7 @@ data:
 #    g, nikio:wheel, role:org-admin
 #    g, admin@nikio.io, role:org-admin
 
-  policy.default: 'role:readonly'
+  # policy.default: 'role:readonly'
   scopes: '[cognito:groups, email]'
 kind: ConfigMap
 metadata:
