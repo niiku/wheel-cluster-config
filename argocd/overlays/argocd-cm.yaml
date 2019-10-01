@@ -27,6 +27,7 @@ data:
       name: rook-release
   repositories: |
     - url: https://github.com/niiku/wheel-cluster-config.git
+    - url: https://github.com/table-tennis-tournament/deployment-configuration.git
   resource.customizations: |
     apiextensions.k8s.io/CustomResourceDefinition:
       ignoreDifferences: |
