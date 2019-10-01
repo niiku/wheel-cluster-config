@@ -4,9 +4,21 @@ data:
     p, role:org-admin, applications, *, */*, allow
     p, role:org-admin, clusters, *, *, allow
     p, role:org-admin, projects, *, *, allow
+    p, role:org-admin, roles, *, *, allow
+    p, role:org-admin, repositories, *, *, allow
     p, role:org-admin, repositories, *, *, allow
     g, nikio:wheel, role:org-admin
     g, admin@nikio.io, role:org-admin
+    g, nikolas.philips@gmail.com, role:org-admin
+
+    p, role:org-ttt, applications, get, table-tennis-tournament/*, allow
+    p, role:org-ttt, applications, sync, table-tennis-tournament/*, allow
+    p, role:org-ttt, projects, get, table-tennis-tournament, allow
+    p, role:org-ttt, clusters, get, *, allow
+    p, role:org-ttt, repositories, get, *, allow
+    g, table-tennis-tournament:, role:org-ttt
+
+
 #  policy.csv: |
 #    p, role:org-admin, applications, *, */*, allow
 #    p, role:org-admin, clusters, get, *, allow
@@ -17,7 +29,7 @@ data:
 #    g, nikio:wheel, role:org-admin
 #    g, admin@nikio.io, role:org-admin
 
-  # policy.default: 'role:readonly'
+  policy.default: 'role:org-ttt'
   scopes: '[cognito:groups, email]'
 kind: ConfigMap
 metadata:
