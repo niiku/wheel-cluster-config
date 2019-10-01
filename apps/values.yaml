@@ -103,16 +103,16 @@ applications:
         jsonPointers:
           - /requiredDropCapabilities
           - /defaultAddCapabilities
-  - name: nfs
-    path: nfs
-    helm:
-      valueFiles:
-        - "values.yaml"
-    repoURL: https://github.com/niiku/wheel-cluster-config.git
-    targetRevision: HEAD
-    syncPolicy:
-      automated:
-        prune: true
+#  - name: nfs
+#    path: nfs
+#    helm:
+#      valueFiles:
+#        - "values.yaml"
+#    repoURL: https://github.com/niiku/wheel-cluster-config.git
+#    targetRevision: HEAD
+#    syncPolicy:
+#      automated:
+#        prune: true
   - name: bookstack
     path: bookstack
     helm:
