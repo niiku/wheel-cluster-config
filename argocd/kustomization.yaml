@@ -10,4 +10,5 @@ patchesStrategicMerge:
   - overlays/argocd-cm.yaml
   - overlays/argocd-rbac-cm.yaml
   - overlays/argocd-server-dpl.yaml
+  - overlays/argocd-repo-server-dpl.yaml
   - overlays/argocd-redis-statefulset.yaml
