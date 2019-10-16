@@ -1,4 +1,6 @@
 # Wheel OKD Cluster Configuration Repository 
+[![App Status](https://argocd.wheel.sh/api/badge?name=apps)](https://argocd.wheel.sh/applications/apps)
+
 This is the Git repository which contains all deployments in the Wheel [OKD](https://okd.io) cluster
 
 # How does it work?
