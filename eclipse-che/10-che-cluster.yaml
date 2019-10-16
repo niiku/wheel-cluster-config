@@ -6,7 +6,7 @@ spec:
   server:
     cheHost: che.apps.wheel.sh
     # server image used in Che deployment
-    cheImage: ''
+    #cheImage: ''
     # tag of an image used in Che deployment
     cheImageTag: 'nightly'
     # image:tag used in Devfile registry deployment
@@ -18,7 +18,7 @@ spec:
     cheFlavor: 'che'
     # specifies a custom cluster role to user for the Che workspaces
     # Uses the default roles if left blank.
-    cheWorkspaceClusterRole: ''
+    #cheWorkspaceClusterRole: ''
     # when set to true the operator will attempt to get a secret in OpenShift router namespace
     # to add it to Java trust store of Che server. Requires cluster-admin privileges for operator service account
     selfSignedCert: false
@@ -26,35 +26,35 @@ spec:
     tlsSupport: true
     # protocol+hostname of a proxy server. Automatically added as JAVA_OPTS and https(s)_proxy
     # to Che server and workspaces containers
-    proxyURL: ''
+    #proxyURL: ''
     # port of a proxy server
-    proxyPort: ''
+    #proxyPort: ''
     # username for a proxy server
-    proxyUser: ''
+    #proxyUser: ''
     # password for a proxy user
-    proxyPassword: ''
+    #proxyPassword: ''
     # a list of non-proxy hosts. Use | as delimiter, eg localhost|my.host.com|123.42.12.32
-    nonProxyHosts: ''
+    #nonProxyHosts: ''
     # sets mem request for server deployment. Defaults to 512Mi
-    serverMemoryRequest: ''
+    #serverMemoryRequest: ''
     # sets mem limit for server deployment. Defaults to 1Gi
-    serverMemoryLimit: ''
+    #serverMemoryLimit: ''
   database:
     # when set to true, the operator skips deploying Postgres, and passes connection details of existing DB to Che server
     # otherwise a Postgres deployment is created
     externalDb: false
     # Postgres Database hostname that Che server uses to connect to. Defaults to postgres
-    chePostgresHostName: ''
+    chePostgresHostName: 'postgres'
     # Postgres Database port that Che server uses to connect to. Defaults to 5432
-    chePostgresPort: ''
+    chePostgresPort: '5432'
     # Postgres user that Che server when making a db connection. Defaults to pgche
-    chePostgresUser: ''
+    chePostgresUser: 'pgche'
     # password of a postgres user. Auto-generated when left blank
-    chePostgresPassword: ''
+    # chePostgresPassword: ''
     # Postgres database name that Che server uses to connect to. Defaults to dbche
-    chePostgresDb: ''
+    chePostgresDb: 'dbche'
     # Postgres deployment in format image:tag. Defaults to registry.redhat.io/rhscl/postgresql-96-rhel7 (see pkg/deploy/defaults.go for latest tag)
-    postgresImage: ''
+    #postgresImage: ''
   storage:
     # persistent volume claim strategy for Che server. Can be common (all workspaces PVCs in one volume),
     # per-workspace (one PVC per workspace for all declared volumes) and unique (one PVC per declared volume). Defaults to common
@@ -64,51 +64,51 @@ spec:
     # instruct Che server to launch a special pod to precreate a subpath in a PV
     preCreateSubPaths: true
     # image:tag for preCreateSubPaths jobs
-    pvcJobsImage: ''
+    #pvcJobsImage: ''
     # keep blank unless you need to use a non default storage class for Postgres PVC
-    postgresPVCStorageClassName: ''
+    #postgresPVCStorageClassName: ''
     # keep blank unless you need to use a non default storage class for workspace PVC(s)
-    workspacePVCStorageClassName: ''
+    #workspacePVCStorageClassName: ''
 
   auth:
     # instructs operator on whether or not to deploy Keycloak/RH SSO instance. When set to true provision connection details
     externalIdentityProvider: false
     # retrieved from respective route/ingress unless explicitly specified in CR (when ExternalKeycloak is true)
-    identityProviderURL: ''
+    #identityProviderURL: ''
     # password for keycloak database user. Auto generated if left blank
-    keycloakPostgresPassword: ''
+    #keycloakPostgresPassword: ''
     # desired admin username of Keycloak admin user (applicable only when externalIdentityProvider is false)
-    identityProviderAdminUserName: ''
+    #identityProviderAdminUserName: ''
     # desired password of Keycloak admin user (applicable only when externalIdentityProvider is false)
     identityProviderPassword: 'admin'
     # name of a keycloak realm. This realm will be created, when externalIdentityProvider is true, otherwise passed to Che server
-    identityProviderRealm: ''
+    #identityProviderRealm: ''
     # id of a keycloak client. This client will be created, when externalIdentityProvider is false, otherwise passed to Che server
-    identityProviderClientId: ''
+    #identityProviderClientId: ''
     # instructs an Operator to enable OpenShift v3 identity provider in Keycloak,
     # as well as create respective oAuthClient and configure Che configMap accordingly
     openShiftoAuth: true
     # name of oAuthClient used in OpenShift v3 identity provider in Keycloak realm. Auto generated if left blank
-    oAuthClientName: ''
+    #oAuthClientName: ''
     # secret used in oAuthClient. Auto generated if left blank
-    oAuthSecret: ''
+    #oAuthSecret: ''
     # image:tag used in Keycloak deployment
     identityProviderImage: 'eclipse/che-keycloak:nightly'
-  k8s:
+#  k8s:
     # your global ingress domain
-    ingressDomain: '192.168.99.101.nip.io'
+#    ingressDomain: '192.168.99.101.nip.io'
     # kubernetes.io/ingress.class, defaults to nginx
-    ingressClass: ''
+#    ingressClass: ''
     # IngressStrategy is the way ingresses are created.
     # Can be multi-host (host is explicitly provided in ingress, <ingress-name>-<namespace>.<global-ingress-domain>),
     # single-host (host is provided, path based rules, <ingress-domain>/path) and default-host *(no host is provided, path based rules)
-    ingressStrategy: ''
+#    ingressStrategy: ''
     # secret name used for tls termination
-    tlsSecretName: ''
+#    tlsSecretName: ''
     # FSGroup the Che POD and Workspace pod containers should run in
-    securityContextFsGroup: ''
+#    securityContextFsGroup: ''
     # User the Che POD and Workspace pod containers should run as
-    securityContextRunAsUser: ''
+#    securityContextRunAsUser: ''
 
 
 
