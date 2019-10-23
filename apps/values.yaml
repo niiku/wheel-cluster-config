@@ -43,6 +43,7 @@ applications:
   - name: eclipse-che
     path: eclipse-che
     repoURL: https://github.com/niiku/wheel-cluster-config.git
+    enabled: false
     targetRevision: HEAD
     syncPolicy:
       automated:
