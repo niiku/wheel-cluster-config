@@ -2,7 +2,7 @@
 
 [MySQL](https://mysql.com) is a fast, reliable, scalable, and easy to use open-source relational database system. MySQL Server is intended for mission-critical, heavy-load production systems as well as for embedding into mass-deployed software.
 
-## TL;DR
+## TL;DR;
 
 ```bash
 $ helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -17,7 +17,8 @@ Bitnami charts can be used with [Kubeapps](https://kubeapps.com/) for deployment
 
 ## Prerequisites
 
-- Kubernetes 1.10+
+- Kubernetes 1.12+
+- Helm 2.11+ or Helm 3.0-beta3+
 - PV provisioner support in the underlying infrastructure
 
 ## Installing the Chart
@@ -29,7 +30,7 @@ $ helm repo add bitnami https://charts.bitnami.com/bitnami
 $ helm install --name my-release bitnami/mysql
 ```
 
-These commands deploy MySQL on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+These commands deploy MySQL on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
@@ -43,7 +44,7 @@ $ helm delete my-release
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
 
-## Configuration
+## Parameters
 
 The following tables lists the configurable parameters of the MySQL chart and their default values.
 
@@ -62,7 +63,7 @@ The following tables lists the configurable parameters of the MySQL chart and th
 | `volumePermissions.enabled`                 | Enable init container that changes volume permissions in the data directory (for cases where the default k8s `runAsUser` and `fsUser` values do not work) | `false`                                                           |
 | `volumePermissions.image.registry`          | Init container volume-permissions image registry                                                                                                          | `docker.io`                                                       |
 | `volumePermissions.image.repository`        | Init container volume-permissions image name                                                                                                              | `bitnami/minideb`                                                 |
-| `volumePermissions.image.tag`               | Init container volume-permissions image tag                                                                                                               | `latest`                                                          |
+| `volumePermissions.image.tag`               | Init container volume-permissions image tag                                                                                                               | `stretch`                                                          |
 | `volumePermissions.image.pullPolicy`        | Init container volume-permissions image pull policy                                                                                                       | `Always`                                                          |
 | `volumePermissions.resources`               | Init container resource requests/limit                                                                                                                    | `nil`                                                             |
 | `service.type`                              | Kubernetes service type                                                                                                                                   | `ClusterIP`                                                       |
@@ -104,6 +105,7 @@ The following tables lists the configurable parameters of the MySQL chart and th
 | `master.readinessProbe.timeoutSeconds`      | When the probe times out (master)                                                                                                                         | `1`                                                               |
 | `master.readinessProbe.successThreshold`    | Minimum consecutive successes for the probe (master)                                                                                                      | `1`                                                               |
 | `master.readinessProbe.failureThreshold`    | Minimum consecutive failures for the probe (master)                                                                                                       | `3`                                                               |
+| `master.affinity`                           | Map of master node/pod affinities                                                                                                                         | `{}`                                                              |
 | `slave.replicas`                            | Desired number of slave replicas                                                                                                                          | `1`                                                               |
 | `slave.antiAffinity`                        | Slave pod anti-affinity policy                                                                                                                            | `soft`                                                            |
 | `slave.updateStrategy.type`                 | Slave statefulset update strategy policy                                                                                                                  | `RollingUpdate`                                                   |
@@ -127,6 +129,7 @@ The following tables lists the configurable parameters of the MySQL chart and th
 | `slave.readinessProbe.timeoutSeconds`       | When the probe times out (slave)                                                                                                                          | `1`                                                               |
 | `slave.readinessProbe.successThreshold`     | Minimum consecutive successes for the probe (slave)                                                                                                       | `1`                                                               |
 | `slave.readinessProbe.failureThreshold`     | Minimum consecutive failures for the probe (slave)                                                                                                        | `3`                                                               |
+| `slave.affinity`                            | Map of slave node/pod affinities                                                                                                                          | `{}`                                                              |
 | `metrics.enabled`                           | Start a side-car prometheus exporter                                                                                                                      | `false`                                                           |
 | `metrics.image`                             | Exporter image name                                                                                                                                       | `bitnami/mysqld-exporter`                                         |
 | `metrics.imageTag`                          | Exporter image tag                                                                                                                                        | `{TAG_NAME}`                                                      |
@@ -153,13 +156,17 @@ $ helm install --name my-release -f values.yaml bitnami/mysql
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
 
+## Configuration and installation details
+
+### [Rolling VS Immutable tags](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/)
+
+It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.
+
+Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
+
 ### Production configuration
 
-This chart includes a `values-production.yaml` file where you can find some parameters oriented to production configuration in comparison to the regular `values.yaml`.
-
-```console
-$ helm install --name my-release -f ./values-production.yaml bitnami/mysql
-```
+This chart includes a `values-production.yaml` file where you can find some parameters oriented to production configuration in comparison to the regular `values.yaml`. You can use this file instead of the default one.
 
 - Force users to specify a password:
 ```diff
@@ -185,13 +192,7 @@ $ helm install --name my-release -f ./values-production.yaml bitnami/mysql
 + metrics.enabled: true
 ```
 
-### [Rolling VS Immutable tags](https://docs.bitnami.com/containers/how-to/understand-rolling-tags-containers/)
-
-It is strongly recommended to use immutable tags in a production environment. This ensures your deployment does not change automatically if the same tag is updated with a different image.
-
-Bitnami will release a new chart updating its containers if a new version of the main container, significant changes, or critical vulnerabilities exist.
-
-## Initialize a fresh instance
+### Initialize a fresh instance
 
 The [Bitnami MySQL](https://github.com/bitnami/bitnami-docker-mysql) image allows you to use your custom scripts to initialize a fresh instance. In order to execute the scripts, they must be located inside the chart folder `files/docker-entrypoint-initdb.d` so they can be consumed as a ConfigMap.
 
